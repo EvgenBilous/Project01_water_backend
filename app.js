@@ -10,7 +10,7 @@ import userRouter from "./routes/auth.js";
 
 dotenv.config();
 const app = express();
-
+console.log("test");
 mongoose
   .connect(process.env.CONNECTION_STRING)
   .then(() => {
