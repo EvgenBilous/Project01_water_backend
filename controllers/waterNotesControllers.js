@@ -1,4 +1,3 @@
-import { HttpError } from "../helpers/HttpError.js";
 import waterNotesServices from "../services/waterNotesServices.js";
 
 const createWaterNote = async (req, res) => {
