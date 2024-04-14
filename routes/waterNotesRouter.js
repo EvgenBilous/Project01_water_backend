@@ -15,11 +15,4 @@ waterNotesRouter.post(
   waterNotesControllers.createWaterNote
 );
 
-waterNotesRouter.put(
-  "/:id",
-  isValidId,
-  validateBody(waterNoteJoiSchema),
-  waterNotesControllers.updateData
-);
-
 export default waterNotesRouter;

@@ -1,7 +1,9 @@
 import { Schema, model } from "mongoose";
 
 const DosesWaterSchema = new Schema({
-  waterVolume: Number,
+  waterVolume: {
+    type: Number,
+  },
   date: String,
 });
 
@@ -16,8 +18,8 @@ const waterNoteSchema = Schema({
     default: 0,
   },
   waterRate: {
-    type: String,
-    default: 15000,
+    type: Number,
+    default: 2000,
   },
   owner: {
     type: Schema.Types.ObjectId,
