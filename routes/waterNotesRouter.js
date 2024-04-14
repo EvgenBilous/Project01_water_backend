@@ -1,8 +1,25 @@
 import express from "express";
+import validateBody from "../helpers/validateBody.js";
 import waterNotesControllers from "../controllers/waterNotesControllers.js";
+import { waterNoteJoiSchema } from "../schemas/waterNotesSchema.js";
+import { authenticate } from "../middleware/authenticate.js";
+import isValidId from "../helpers/isValidId.js";
 
 const waterNotesRouter = express.Router();
 
-waterNotesRouter.post("/", waterNotesControllers.createWaterNote);
+waterNotesRouter.use(authenticate);
+
+waterNotesRouter.post(
+  "/",
+  validateBody(waterNoteJoiSchema),
+  waterNotesControllers.createWaterNote
+);
+
+waterNotesRouter.put(
+  "/:id",
+  isValidId,
+  validateBody(waterNoteJoiSchema),
+  waterNotesControllers.updateData
+);
 
 export default waterNotesRouter;

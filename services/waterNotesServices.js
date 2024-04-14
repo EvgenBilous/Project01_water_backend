@@ -1,9 +1,26 @@
 import { WaterNote } from "../models/waterNoteModel.js";
 
-const getWaterNotes = () => WaterNote.find();
+const addNewWaterNote = async (owner, { waterVolume, date }) => {
+  try {
+    const dosesWater = [{ waterVolume, date }];
 
-const addWaterNote = (data) => WaterNote.create(data);
+    const newWaterNote = await WaterNote.create({
+      date,
+      dosesWater,
+      totalWater: waterVolume,
+      owner,
+    });
+    return {
+      ...newWaterNote._doc,
+    };
+  } catch (error) {
+    console.log(error.message);
+  }
+};
+
+const getWaterNote = (id) => WaterNote.find({ owner });
 
 export default {
-  addWaterNote,
+  addNewWaterNote,
+  getWaterNote,
 };

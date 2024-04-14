@@ -1,15 +1,15 @@
 import waterNotesServices from "../services/waterNotesServices.js";
 
 const createWaterNote = async (req, res) => {
-  const { waterVolume, date } = req.body;
-
-  const newWaterNote = await waterNotesServices.createWaterNote({
-    waterVolume,
-    date,
-  });
-
-  res.json(newWaterNote);
+  const { _id: owner } = req.user;
+  const newWaterNote = await waterNotesServices.addNewWaterNote(
+    owner,
+    req.body
+  );
+  res.status(201).json(newWaterNote);
 };
+
+const updateData = async (req, res) => {};
 
 export default {
   createWaterNote,
