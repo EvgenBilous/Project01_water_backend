@@ -37,3 +37,5 @@ const createWaterNote = async (req, res) => {
 export default {
   createWaterNote,
 };
+
+console.log(1);
